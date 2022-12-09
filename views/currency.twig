@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+{% block title %}Cryptocurrency{% endblock %}
+{% block content %}
+    {% include 'navbar.twig' %}
+    <!--Currency Cards-->
+    <div class="container-fluid" style=" width: 95%">
+    <div class="row justify-content-md-center">
+    {% for currency in currency|slice(0,15) %}
+    <div class="card m-3 p-1 shadow p-1 mb-5 bg-body rounded" style="width: 18rem">
+        <div class="card-body">
+            <h5 class="card-title" style="color:#14144c">{{ currency.name }}</h5>
+            <p class="card-text">{{ currency.symbol }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="bi bi-currency-bitcoin" style="color:rgb(109,106,227)"></i> {{ currency.price |number_format(2) }} EUR</li>
+            <li class="list-group-item"><span class="hour-span">1h</span> {{ currency.percentChange1h|number_format(2) }}%</li>
+            <li class="list-group-item"><span class="hour-span">24h</span> {{ currency.percentChange24h|number_format(2) }}% </li>
+        </ul>
+{#        <div class="card-body">#}
+{#            <a href="#" class="card-link">Card link</a>#}
+{#            <a href="#" class="card-link">Another link</a>#}
+{#        </div>#}
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+
+{% endblock %}

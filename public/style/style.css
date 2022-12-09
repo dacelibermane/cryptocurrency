@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(40,9,96);
+    background: linear-gradient(0deg, rgba(40,9,96,1) 14%, rgba(151,159,205,0.9948354341736695) 100%);
+    /*background: linear-gradient(0deg, rgba(235,223,215,1) 5%, rgba(100, 68, 228,0.9948354341736695) 90%);*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+.nav-name{
+    color:rgb(34, 34, 36);
+}
+.nav-bg{
+    background-color: rgba(151,159,205, 0.2);
+}
+
+.card-title{
+    text-decoration: underline;
+}
+
+.hour-span{
+    color:rgb(109,106,227);
+    margin-right: 5px;
+}
+
+

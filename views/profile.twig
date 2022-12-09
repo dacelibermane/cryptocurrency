@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+{% block title %}UserAccount{% endblock %}
+{% block content %}
+    {% include "navbar.twig" %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 >Welcome, {{ auth.name | capitalize }}!</h1>
+        </div>
+    </div>
+
+{#    <h2>Here are your account details:</h2>#}
+{% endblock %}

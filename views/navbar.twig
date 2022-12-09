@@ -1,0 +1,30 @@
+ <nav class="navbar nav-bg navbar-expand-lg mb-5 p-4">
+    <div class="container-fluid ">
+        <a class="navbar-brand" href="/"><h1 class="nav-name">Cryptocurrency</h1></a>
+{#        <!--Search button-->#}
+{#        <form class="d-flex" action="/" method="get">#}
+{#            <input class="form-control me-2" type="text" id="search" name="search" placeholder="Search"#}
+{#                   aria-label="Search" required>#}
+{#            <button class="btn btn-outline-light" type="submit">Search</button>#}
+{#        </form>#}
+        {% if auth.name %}
+            <form class="m-3 form-inline float-right" action="/login" method="get">
+                <button class="btn btn-secondary" type="submit">Login</button>
+            </form>
+            <!--Register-->
+            <form class=" ml-3 form-inline" action="/logout" method="get">
+                <button class="btn btn-secondary" type="submit">Logout</button>
+            </form>
+
+        {% else %}
+        <!--Login-->
+        <form class="m-3 form-inline float-right" action="/register" method="get">
+            <button class="btn btn-secondary" type="submit">Register</button>
+        </form>
+        <!--Register-->
+        <form class=" ml-3 form-inline" action="/login" method="get">
+            <button class="btn btn-secondary" type="submit">Login</button>
+        </form>
+        {% endif %}
+    </div>
+ </nav>
