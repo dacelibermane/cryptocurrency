@@ -13,7 +13,7 @@ class Database
     {
         if (self::$connection == null) {
             $connectionParams = [
-                'dbname' => 'crypto_currency',
+                'dbname' => 'crypto_users',
                 'user' => $_ENV['DB_USER'],
                 'password' => $_ENV['DB_PASSWORD'],
                 'host' => 'localhost',
