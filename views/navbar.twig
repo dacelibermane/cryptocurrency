@@ -1,6 +1,6 @@
 <nav class="navbar nav-bg navbar-expand-lg mb-5 p-4">
     <div class="container-fluid ">
-        <a class="navbar-brand" href="/"><h1 class="nav-name">BitTracker</h1></a>
+        <a class="navbar-brand" href="/"><h1 class="nav-name">CryptoCoin</h1></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,24 +30,24 @@
             <form class="d-flex" action="/" method="get">
                 <input class="form-control me-2" type="text" id="search" name="search" placeholder="Search"
                        aria-label="Search" required>
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
             {% if auth.name %}
             <!--Logout-->
             <form class="d-flex m-3" action="/logout" method="get">
-                <button class="btn btn-outline-light" type="submit">Logout</button>
+                <button class="btn  btn-outline-dark" type="submit">Logout</button>
             </form>
                 <form class="d-flex ml-3" action="/logout" method="get">
-                    <button class="btn btn-outline-light" type="submit">Buy</button>
+                    <button class="btn btn-outline-dark" type="submit">Buy</button>
                 </form>
             {% else %}
             <!--Register-->
             <form class="d-flex m-3" action="/register" method="get">
-                <button class="btn btn-outline-light" type="submit">Register</button>
+                <button class="btn btn-outline-dark" type="submit">Register</button>
             </form>
             <!--Login-->
             <form class="d-flex ml-3" action="/login" method="get">
-                <button class="btn btn-outline-light" type="submit">Login</button>
+                <button class="btn btn-outline-dark" type="submit">Login</button>
             </form>
             {% endif %}
         </div>

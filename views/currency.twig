@@ -3,10 +3,10 @@
 {% block content %}
     {% include 'navbar.twig' %}
     <!--Currency Table-->
-    <div class="container-fluid" style=" width: 95%">
-        <table class="table table-striped table-bordered shadow p-1 mb-5 bg-body rounded">
-            <thead>
-            <tr>
+    <div class="container-fluid p-4" style=" width: 80%">
+        <table class="table table-responsive table-sm shadow p-4 mb-5 bg-body rounded">
+            <thead style="width: 40px">
+            <tr >
                 <th>Currency</th>
                 <th>Price (EUR)</th>
                 <th>Change (1h)</th>
@@ -16,8 +16,17 @@
             <tbody>
             {% for currency in currency|slice(0,15) %}
                 <tr>
-                    <td><h5>{{ currency.name }}</h5> ({{ currency.symbol }})</td>
-                    <td>{{ currency.price |number_format(2) }}</td>
+                    <td >
+                        <figure class="d-flex m-0" >
+                            <img src="{{ currency.logo }}" alt="{{ currency.name }} logo">
+                            <figcaption class="text-capitalize" >
+                                <h5>{{ currency.name }}</h5>
+                                <span>({{ currency.symbol }})</span>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td>{{ currency.price |number_format(2) }}€
+                    </td>
                     <td>
                         {% if currency.percentChange1h >= 0 %}
                             <i class="fas fa-arrow-up" style="color:green"></i> {{ currency.percentChange1h|number_format(2) }}%
