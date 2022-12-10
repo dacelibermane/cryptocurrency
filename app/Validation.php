@@ -9,7 +9,6 @@ class Validation
         $this->validateName($post);
         $this->validateRegisterEmail($post);
         $this->validatePasswordMatch($post);
-
     }
 
     public function validateName(array $post): void
@@ -58,7 +57,6 @@ class Validation
             ->fetchAssociative();
 
         if (!$user) {
-            if ($_POST['email'] !== $user['email']) {
                 $_SESSION['errors']['email'] = "Wrong email";
             }
             if (!password_verify($_POST['password'], $user['password'])) {
@@ -66,7 +64,6 @@ class Validation
             }
         }
 
-    }
     public function getUserId(array $post):void
     {
         $queryBuilder = Database::getConnection()->createQueryBuilder();

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Collections\CryptocurrenciesCollection;
 use App\Repositories\CryptocurrencyRepository;
-use App\Repositories\CryptocurrencyApiRepository;
+use App\Repositories\CryptoCoinMarketCapApiRepository;
 
 class CryptoCurrenciesService
 {
@@ -12,7 +12,7 @@ class CryptoCurrenciesService
 
     public function __construct()
     {
-        $this->currencyRepository = new CryptocurrencyApiRepository();
+        $this->currencyRepository = new CryptoCoinMarketCapApiRepository();
     }
 
     public function execute(): CryptocurrenciesCollection

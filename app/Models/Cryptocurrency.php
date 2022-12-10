@@ -10,10 +10,16 @@ class Cryptocurrency
     private float $percentChange1h;
     private float $percentChange24h;
 
-    public function __construct(string $name, string $symbol, float $price, float $percentChange1h, float $percentChange24h)
+    public function __construct(
+        string $name,
+        string $symbol,
+        float $price,
+        float $percentChange1h,
+        float $percentChange24h)
     {
         $this->name = $name;
         $this->symbol = $symbol;
+//        $this->logo = $logo;
         $this->price = $price;
         $this->percentChange1h = $percentChange1h;
         $this->percentChange24h = $percentChange24h;
@@ -28,6 +34,11 @@ class Cryptocurrency
     {
         return $this->symbol;
     }
+
+//    public function getLogo(): string
+//    {
+//        return $this->logo;
+//    }
 
     public function getPrice(): float
     {

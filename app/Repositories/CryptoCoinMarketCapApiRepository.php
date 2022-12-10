@@ -6,7 +6,7 @@ use App\Models\Collections\CryptocurrenciesCollection;
 use App\Models\Cryptocurrency;
 use CoinMarketCap;
 
-class CryptocurrencyApiRepository implements CryptocurrencyRepository
+class CryptoCoinMarketCapApiRepository implements CryptocurrencyRepository
 {
     public function getCryptocurrencies(): CryptocurrenciesCollection
     {

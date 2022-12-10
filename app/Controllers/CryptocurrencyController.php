@@ -10,7 +10,6 @@ class CryptocurrencyController
     public function index():Template
     {
         $currencies = (new CryptocurrenciesService())->execute();
-
         return new Template('currency.twig', ['currency' => $currencies->getCryptocurrencies()]);
     }
 }

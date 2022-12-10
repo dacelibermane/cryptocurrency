@@ -2,27 +2,39 @@
 {% block title %}Cryptocurrency{% endblock %}
 {% block content %}
     {% include 'navbar.twig' %}
-    <!--Currency Cards-->
+    <!--Currency Table-->
     <div class="container-fluid" style=" width: 95%">
-    <div class="row justify-content-md-center">
-    {% for currency in currency|slice(0,15) %}
-    <div class="card m-3 p-1 shadow p-1 mb-5 bg-body rounded" style="width: 18rem">
-        <div class="card-body">
-            <h5 class="card-title" style="color:#14144c">{{ currency.name }}</h5>
-            <p class="card-text">{{ currency.symbol }}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><i class="bi bi-currency-bitcoin" style="color:rgb(109,106,227)"></i> {{ currency.price |number_format(2) }} EUR</li>
-            <li class="list-group-item"><span class="hour-span">1h</span> {{ currency.percentChange1h|number_format(2) }}%</li>
-            <li class="list-group-item"><span class="hour-span">24h</span> {{ currency.percentChange24h|number_format(2) }}% </li>
-        </ul>
-{#        <div class="card-body">#}
-{#            <a href="#" class="card-link">Card link</a>#}
-{#            <a href="#" class="card-link">Another link</a>#}
-{#        </div>#}
+        <table class="table table-striped table-bordered shadow p-1 mb-5 bg-body rounded">
+            <thead>
+            <tr>
+                <th>Currency</th>
+                <th>Price (EUR)</th>
+                <th>Change (1h)</th>
+                <th>Change (24h)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for currency in currency|slice(0,15) %}
+                <tr>
+                    <td><h5>{{ currency.name }}</h5> ({{ currency.symbol }})</td>
+                    <td>{{ currency.price |number_format(2) }}</td>
+                    <td>
+                        {% if currency.percentChange1h >= 0 %}
+                            <i class="fas fa-arrow-up" style="color:green"></i> {{ currency.percentChange1h|number_format(2) }}%
+                        {% else %}
+                            <i class="fas fa-arrow-down" style="color:red"></i> {{ currency.percentChange1h|number_format(2) }}%
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if currency.percentChange24h >= 0 %}
+                            <i class="fas fa-arrow-up" style="color:green"></i> {{ currency.percentChange24h|number_format(2) }}%
+                        {% else %}
+                            <i class="fas fa-arrow-down" style="color:red"></i> {{ currency.percentChange24h|number_format(2) }}%
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-    {% endfor %}
-    </div>
-    </div>
-
 {% endblock %}

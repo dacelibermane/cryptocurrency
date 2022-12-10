@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Database;
-use App\RegisterServiceRequest;
 
 class RegisterService
 {

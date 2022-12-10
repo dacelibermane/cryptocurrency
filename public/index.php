@@ -25,7 +25,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $rou
     $route->addRoute('POST', '/register', [RegisterController::class, 'register']);
     $route->addRoute('GET', '/login', [LoginController::class, 'showForm']);
     $route->addRoute('POST', '/login', [LoginController::class, 'login']);
-    $route->addRoute('GET', '/account', [ProfileController::class, 'showProfile']);
+    $route->addRoute('GET', '/profile', [ProfileController::class, 'showProfile']);
     $route->addRoute('GET', '/logout', [LogoutController::class, 'logout']);
 });
 
