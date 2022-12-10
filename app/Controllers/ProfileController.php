@@ -8,6 +8,6 @@ class ProfileController
 {
     public function showProfile(): Template
     {
-        return new Template('profile.twig');
+        return Template::render('profile.twig');
     }
 }

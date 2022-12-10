@@ -15,4 +15,9 @@ class Redirect
     {
         return $this->url;
     }
+
+    public static function toPage(string $path): Redirect
+    {
+        return new Redirect($path);
+    }
 }

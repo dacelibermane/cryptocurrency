@@ -10,7 +10,7 @@ class LoginController
 {
     public function showForm(): Template
     {
-        return new Template('login.twig');
+        return Template::render('login.twig');
     }
 
     public function login(): Redirect
@@ -18,10 +18,10 @@ class LoginController
         $validation = new Validation();
         $validation->validateLogin($_POST);
         if (count($_SESSION['errors']) > 0) {
-            return new Redirect('/login');
+            return Redirect::toPage('/login');
         }
         $validation->getUserId($_POST);
 
-        return new Redirect('/profile');
+        return Redirect::toPage('/profile');
     }
 }

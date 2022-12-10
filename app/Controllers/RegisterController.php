@@ -12,7 +12,7 @@ class RegisterController
 {
     public function showForm(): Template
     {
-        return new Template('register.twig');
+        return Template::render('register.twig');
     }
 
     public function register(): Redirect
@@ -21,7 +21,7 @@ class RegisterController
         $validation->validateRegistration($_POST);
 
         if (count($_SESSION['errors']) > 0) {
-            return new Redirect('/register');
+            return Redirect::toPage('/register');
         }
 
         $registerService = new RegisterService();
@@ -32,6 +32,6 @@ class RegisterController
                 $_POST['password']
             )
         );
-        return new Redirect('/login');
+        return Redirect::toPage('/login');
     }
 }
