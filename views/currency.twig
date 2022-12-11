@@ -15,28 +15,24 @@
             <thead style="width: 40px">
             <tr >
                 <th>Currency</th>
-                <th>Price (EUR)</th>
+                <th>Price (USD)</th>
                 <th>Change (1h)</th>
                 <th>Change (24h)</th>
+                {% if auth.name %}
+                <th>Buy</th>
+                <th>Sell</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
             {% for currency in currency %}
                 <tr>
-                    <td >
-                        <figure class="d-flex m-0" >
+                    <td>
+                        <figure class="d-flex m-3" >
                             <img src="{{ currency.logo }}" alt="{{ currency.name }} logo">
                             <figcaption class="text-capitalize" >
                                 <h5>{{ currency.name }}</h5>
                                 <span>({{ currency.symbol }})</span>
-                                <form method="post">
-                                    <input type="hidden" name="currency" value="{{ currency.symbol }}">
-                                    <button type="submit" class="btn btn-outline-primary btn-sm">Buy</button>
-                                </form>
-                                <form method="post">
-                                    <input type="hidden" name="currency" value="{{ currency.symbol }}">
-                                    <button type="submit" class="btn btn-outline-primary btn-sm">Sell</button>
-                                </form>
                             </figcaption>
                         </figure>
                     </td>
@@ -56,6 +52,22 @@
                             <i class="fas fa-arrow-down" style="color:red"></i> {{ currency.percentChange24h|number_format(2) }}%
                         {% endif %}
                     </td>
+
+                    <!-- Add buttons for buying and selling -->
+                    {% if auth.name %}
+                    <td>
+                        <form method="post">
+                            <input class="smaller" name="currency" value="{{ currency.symbol }}">
+                            <button type="submit" class="btn btn-primary btn-sm">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <input class="smaller" name="currency" value="{{ currency.symbol }}">
+                            <button type="submit" class="btn btn-primary btn-sm">Sell</button>
+                        </form>
+                    </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>
