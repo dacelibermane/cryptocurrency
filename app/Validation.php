@@ -7,7 +7,8 @@ class Validation
     public function validateRegistration(array $post): void
     {
         $this->validateName($post);
-        $this->validateRegisterEmail($post);
+        $this->validateEmail($post);
+        $this->validatePassword($post);
         $this->validatePasswordMatch($post);
     }
 
@@ -21,7 +22,7 @@ class Validation
         }
     }
 
-    public function validateRegisterEmail(array $post): void
+    public function validateEmail(array $post): void
     {
         $queryBuilder = Database::getConnection()->createQueryBuilder();
         $user = $queryBuilder
@@ -36,6 +37,13 @@ class Validation
 
         if (empty($post['email'])) {
             $_SESSION['errors']['email'] = 'Email is required';
+        }
+    }
+
+    public function validatePassword(array $post): void
+    {
+        if (empty($post['password'])) {
+            $_SESSION['errors']['password'] = 'Password is required';
         }
     }
 
@@ -59,9 +67,12 @@ class Validation
         if (!$user) {
                 $_SESSION['errors']['email'] = "Wrong email";
             }
-            if (!password_verify($_POST['password'], $user['password'])) {
-                $_SESSION['errors']['password'] = "Wrong password";
-            }
+        if (empty($post['email'])) {
+            $_SESSION['errors']['email'] = 'Email is required';
+        }
+        if ($user && !password_verify($_POST['password'], $user['password'])) {
+            $_SESSION['errors']['password'] = "Wrong password";
+        }
         }
 
     public function getUserId(array $post):void

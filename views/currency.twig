@@ -2,6 +2,13 @@
 {% block title %}Cryptocurrency{% endblock %}
 {% block content %}
     {% include 'navbar.twig' %}
+    {% if auth.name %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 >Welcome, {{ auth.name | capitalize }}!</h1>
+        </div>
+    </div>
+    {% endif %}
     <!--Currency Table-->
     <div class="container-fluid p-4" style=" width: 80%">
         <table class="table table-responsive table-sm shadow p-4 mb-5 bg-body rounded">
@@ -14,7 +21,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for currency in currency|slice(0,15) %}
+            {% for currency in currency %}
                 <tr>
                     <td >
                         <figure class="d-flex m-0" >
@@ -22,6 +29,14 @@
                             <figcaption class="text-capitalize" >
                                 <h5>{{ currency.name }}</h5>
                                 <span>({{ currency.symbol }})</span>
+                                <form method="post">
+                                    <input type="hidden" name="currency" value="{{ currency.symbol }}">
+                                    <button type="submit" class="btn btn-outline-primary btn-sm">Buy</button>
+                                </form>
+                                <form method="post">
+                                    <input type="hidden" name="currency" value="{{ currency.symbol }}">
+                                    <button type="submit" class="btn btn-outline-primary btn-sm">Sell</button>
+                                </form>
                             </figcaption>
                         </figure>
                     </td>

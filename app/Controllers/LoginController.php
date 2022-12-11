@@ -16,12 +16,13 @@ class LoginController
     public function login(): Redirect
     {
         $validation = new Validation();
+        $validation->validatePassword($_POST);
         $validation->validateLogin($_POST);
         if (count($_SESSION['errors']) > 0) {
             return Redirect::toPage('/login');
         }
         $validation->getUserId($_POST);
 
-        return Redirect::toPage('/profile');
+        return Redirect::toPage('/');
     }
 }
